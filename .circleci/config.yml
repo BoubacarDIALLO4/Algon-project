@@ -27,4 +27,12 @@ jobs:
       - run:
           name: "Check kubectl version"
           command: kubectl version --client
+
+      - run:
+          name: "Deploy Flask API and MYSQL database with kubectl"
+          command: |
+            set -x
+            sudo kubectl apply -f mysql-pv.yml
+            kubectl apply -f mysql-deployment.yml
+            kubectl apply -f flaskapp-deployment.yml
           
